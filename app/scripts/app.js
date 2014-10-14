@@ -14,12 +14,20 @@ angular.module('destinationApp', ['ngRoute']).config(function($routeProvider) {
         });
 });
 
-angular.module('destinationApp').factory("DestinationService", function($http) {
+angular.module('destinationApp').factory("DestinationService", function($http, $q) {
+    var cachedData = null;
+
     return {
         getDestinationData: function() {
-            return $http.get('/scripts/data.json').then(function(response) {
-                return response.data;
-            });
+            if(cachedData) {
+                return $q.when(cachedData);
+            }
+            else {
+                return $http.get('/scripts/data.json').then(function(response) {
+                    cachedData = response.data;
+                    return response.data;
+                });
+            }
         }
     }
 });
