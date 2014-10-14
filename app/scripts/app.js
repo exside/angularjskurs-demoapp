@@ -22,4 +22,10 @@ function KursController() {
             })
         }
     };
+
+    this.removeDone = function() {
+        this.tasks = this.tasks.filter(function(t) {
+            return !t.done;
+        });
+    };
 }

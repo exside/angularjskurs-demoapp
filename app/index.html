@@ -23,9 +23,12 @@
             <h3>Tasks</h3>
             <ul>
                 <li ng-repeat="task in ctrl.tasks">
+                    <input type="checkbox" ng-model="task.done"/>
                     {{task.name}}
                 </li>
             </ul>
+
+            <button ng-click="ctrl.removeDone()" class="btn btn-primary">Alle erledigent entfernen</button>
         </div>
         <div class="col-md-4">
             <h3>Neuen Task hinzufügen</h3>
