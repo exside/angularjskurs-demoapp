@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('destinationApp', ['ngRoute']).config(function($routeProvider) {
+angular.module('destinationApp', [
+    'ngRoute',
+    'nvd3ChartDirectives'
+]).config(function($routeProvider) {
     $routeProvider
         .when('/destination', {
             templateUrl: 'templates/destination.html',
@@ -40,6 +43,23 @@ angular.module('destinationApp').controller("DestinationController", function(De
     function activate() {
         DestinationService.getDestinationData().then(function(data) {
             self.destinationData = data;
+            self.pieData = _.map(self.destinationData, function(destination) {
+                return {
+                    key: destination.name,
+                    y: destination.price
+                }
+            });
+            self.xFunction = function() {
+                return function(d) {
+                    return d.key;
+                };
+            }
+            self.yFunction = function() {
+                return function(d) {
+                    return d.y;
+                };
+            }
+            console.log(self.pieData);
         });
     }
 });

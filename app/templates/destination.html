@@ -5,3 +5,14 @@
         <a ng-href="/#/destination/{{destination.id}}">{{destination.name}}</a>
     </li>
 </ul>
+
+<nvd3-pie-chart
+        data="ctrl.pieData"
+        id="exampleId"
+        width="550"
+        height="350"
+        x="ctrl.xFunction()"
+        y="ctrl.yFunction()"
+        showLabels="true">
+    <svg></svg>
+</nvd3-pie-chart>
