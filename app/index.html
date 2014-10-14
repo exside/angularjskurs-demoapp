@@ -19,8 +19,9 @@
     <div ng-controller="KursController as ctrl">
         <h1>Hello {{ctrl.name}}</h1>
 
-        <button class="btn btn-primary" ng-click="ctrl.sayHello()">say hello</button>
-
+        <p>
+            <input type="text" ng-model="ctrl.name"/>
+        </p>
     </div>
 </div>
 
