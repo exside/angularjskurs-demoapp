@@ -11,5 +11,15 @@ function KursController() {
 
     this.sayHello = function() {
         alert(this.name);
-    }
+    };
+
+    this.addTask = function(task) {
+        console.log(task);
+        if(task) {
+            this.tasks.push({
+                name: task,
+                done: false
+            })
+        }
+    };
 }

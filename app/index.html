@@ -15,15 +15,27 @@
 
 <body ng-app>
 
-<div class="container">
-    <div ng-controller="KursController as ctrl">
-        <h1>Tasks</h1>
+<div class="container" ng-controller="KursController as ctrl">
 
-        <ul>
-            <li ng-repeat="task in ctrl.tasks">
-                {{task.name}}
-            </li>
-        </ul>
+    <div class="row">
+        <h2>Task App</h2>
+        <div class="col-md-8">
+            <h3>Tasks</h3>
+            <ul>
+                <li ng-repeat="task in ctrl.tasks">
+                    {{task.name}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h3>Neuen Task hinzufügen</h3>
+            <input ng-model="ctrl.newTask">
+            <button class="btn btn-primary" ng-click="ctrl.addTask(ctrl.newTask)">
+                <span class="glyphicon glyphicon-plus"></span> Task
+            </button>
+        </div>
+    </div>
+
     </div>
 </div>
 
