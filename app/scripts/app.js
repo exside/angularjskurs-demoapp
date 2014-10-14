@@ -14,22 +14,12 @@ angular.module('destinationApp', ['ngRoute']).config(function($routeProvider) {
         });
 });
 
-angular.module('destinationApp').factory("DestinationService", function($q) {
-    var destinationData = [{
-        id: "1",
-        name: "Paris",
-        description: "Ein wunderschöner Ort an der Seine",
-        price: 695
-    }, {
-        name: "Interlaken",
-        id: "2",
-        description: "Die Adventure-Hauptstadt im Oberland",
-        price: 899
-    }];
-
+angular.module('destinationApp').factory("DestinationService", function($http) {
     return {
         getDestinationData: function() {
-            return $q.when(destinationData);
+            return $http.get('/scripts/data.json').then(function(response) {
+                return response.data;
+            });
         }
     }
 });
