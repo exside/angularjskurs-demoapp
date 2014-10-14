@@ -17,7 +17,9 @@
 
 <div class="container">
     <div ng-controller="KursController as ctrl">
-        <h1>Hello World</h1>
+        <h1>Hello {{ctrl.name}}</h1>
+
+        <h2>Hello <span ng-bind="ctrl.name"></span></h2>
     </div>
 </div>
 
